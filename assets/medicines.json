@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Dolo 650",
+    "defaultDosagePerDay": 3,
+    "defaultDurationDays": 5,
+    "timing": "After Food"
+  },
+  {
+    "name": "Amoxicillin 500",
+    "defaultDosagePerDay": 3,
+    "defaultDurationDays": 7,
+    "timing": "Before Food"
+  },
+  {
+    "name": "Cetirizine",
+    "defaultDosagePerDay": 1,
+    "defaultDurationDays": 3,
+    "timing": "After Food"
+  }
+]
