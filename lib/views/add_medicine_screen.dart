@@ -71,12 +71,11 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
                       dosagePerDay = match.defaultDosagePerDay;
                       durationDays = match.defaultDurationDays;
                       timing = match.timing;
-                      selectedTimes.clear(); // Clear previous selections
+                      selectedTimes.clear();
                     });
                   }
                 },
                 fieldViewBuilder: (context, controller, focusNode, onFieldSubmitted) {
-                  // Don’t override _nameController if already set
                   controller.text = _nameController.text;
                   return TextFormField(
                     controller: _nameController,
@@ -113,7 +112,7 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
                 onChanged: (val) {
                   setState(() {
                     dosagePerDay = val ?? 1;
-                    selectedTimes.clear(); // Reset times when dosage changes
+                    selectedTimes.clear();
                   });
                 },
               ),
@@ -147,7 +146,7 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
                 children: fixedTimeSlots.map((time) {
                   final isSelected = selectedTimes.contains(time);
                   final timeStr = time.format(context);
-                  return ChoiceChip(
+                  return FilterChip(
                     label: Text(timeStr),
                     selected: isSelected,
                     onSelected: (selected) {
@@ -155,6 +154,12 @@ class _AddMedicineScreenState extends State<AddMedicineScreen> {
                         if (selected) {
                           if (selectedTimes.length < dosagePerDay) {
                             selectedTimes.add(time);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('You can only select $dosagePerDay time(s).'),
+                              ),
+                            );
                           }
                         } else {
                           selectedTimes.remove(time);

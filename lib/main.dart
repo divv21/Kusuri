@@ -3,6 +3,7 @@ import 'package:kusuri/repositories/local_medicine_repository.dart';
 import 'package:kusuri/services/reminder_service.dart';
 import 'package:kusuri/services/scan_service.dart';
 import 'package:kusuri/services/suggestion_service.dart';
+import 'package:kusuri/utils/theme/kusuri_theme.dart';
 import 'package:kusuri/viewmodels/add_medicine_viewmodel.dart';
 import 'package:kusuri/viewmodels/medicine_viewmodel.dart';
 import 'package:kusuri/views/home_screen.dart';
@@ -34,8 +35,9 @@ class KusuriApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Kusuri',
-        theme: ThemeData(primarySwatch: Colors.teal),
+        theme: KusuriTheme.lightTheme,
         home: HomeScreen(),
       ),
     );
